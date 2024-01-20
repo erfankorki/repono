@@ -1,18 +1,28 @@
 import useSlice from "./useSlice";
 
+const StateContainer = () => {
+  const { counter } = useSlice();
+  return <p>{counter}</p>;
+};
+
+const StateUpdater = () => {
+  const { setCounter } = useSlice();
+  return (
+    <button
+      onClick={() => {
+        setCounter(20);
+      }}
+    >
+      INCREMENT
+    </button>
+  );
+};
 function App() {
-  const { counter, setCounter } = useSlice();
   return (
     <main>
       <h1>REPONO</h1>
-      <p>{counter}</p>
-      <button
-        onClick={() => {
-          setCounter((counter) => counter + 1);
-        }}
-      >
-        INCREMENT
-      </button>
+      <StateContainer />
+      <StateUpdater />
     </main>
   );
 }
